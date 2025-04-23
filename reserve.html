@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ご予約入力 | SOLAIZ 石垣</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-hotel-form.css">
+</head>
+<body style="background:#141830; color:#fff;">
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="SOLAIZロゴ" class="header-logo-img" style="vertical-align:middle; filter: invert(1) brightness(2);"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="facility.html">施設紹介</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="staff.html">スタッフ紹介</a></li>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="#access">アクセス</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="reserve-form-wrap" style="max-width:420px;margin:60px auto 0 auto;padding:32px 24px;border-radius:16px;">
+      <h2 style="text-align:center;margin-bottom:1.3em;">ご予約入力フォーム</h2>
+      <form class="reserve-form">
+        <label class="reserve-label" for="checkin">チェックイン日</label>
+        <input class="reserve-input" type="date" id="checkin" name="checkin" required><br>
+        <label class="reserve-label" for="checkout">チェックアウト日</label>
+        <input class="reserve-input" type="date" id="checkout" name="checkout" required><br>
+        <label class="reserve-label" for="name">お名前</label>
+        <input class="reserve-input" type="text" id="name" name="name" required><br>
+        <label class="reserve-label" for="email">メールアドレス</label>
+        <input class="reserve-input" type="email" id="email" name="email" required><br>
+        <label class="reserve-label" for="guests">ご利用人数</label>
+        <input class="reserve-input" type="number" id="guests" name="guests" min="1" max="10" required><br>
+        <label class="reserve-label" for="message">ご要望・ご質問</label>
+        <textarea class="reserve-input" id="message" name="message" rows="3"></textarea><br>
+        <button type="submit" class="cta-btn sauna-btn" style="margin-top:0.5em;width:100%;">送信</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

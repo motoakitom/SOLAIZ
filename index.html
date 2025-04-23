@@ -4,37 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOLAIZ 石垣 | 石垣島の宿泊施設</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&family=Bebas+Neue&family=Kaisei+HarunoUmi:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-hotel-form.css">
+  <!-- flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    /* 丸いデザイン用カスタム */
+    .flatpickr-calendar, .flatpickr-day, .flatpickr-months, .flatpickr-innerContainer, .flatpickr-weekdays {
+      border-radius: 1.5em !important;
+    }
+    .flatpickr-day.selected, .flatpickr-day.today {
+      border-radius: 50% !important;
+      background: #1e90ff;
+      color: #fff;
+    }
+    .flatpickr-day {
+      border-radius: 1em !important;
+      transition: background 0.15s, color 0.15s;
+    }
+    .flatpickr-month {
+      border-radius: 1.2em 1.2em 0 0 !important;
+    }
+    .flatpickr-calendar {
+      box-shadow: 0 8px 32px rgba(30,144,255,0.11);
+      border: 1.5px solid #b5c8e2;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <nav class="navbar">
-      <div class="logo">SOLAIZ ISHIGAKI</div>
+      <a href="index.html" class="logo" style="display:inline-block;"><img src="images/logo.png" alt="SOLAIZロゴ" class="header-logo-img" style="vertical-align:middle; filter: invert(1) brightness(2);"></a>
       <div class="menu-toggle" aria-label="メニューを開く" tabindex="0">
         <i class="fas fa-bars-staggered"></i>
       </div>
       <ul class="nav-links">
-        <li><a href="#home"><i class="fas fa-home"></i> ホーム</a></li>
-        <li><a href="facility.html"><i class="fas fa-bed"></i> 施設紹介</a></li>
-        <li><a href="gallery.html"><i class="fas fa-images"></i> ギャラリー</a></li>
-        <li><a href="staff.html"><i class="fas fa-user-friends"></i> スタッフ紹介</a></li>
-        <li><a href="company.html"><i class="fas fa-building"></i> 会社概要</a></li>
-        <li><a href="#access"><i class="fas fa-map-marker-alt"></i> アクセス</a></li>
-        <li><a href="#contact" class="reserve-btn"><i class="fas fa-calendar-check"></i> 予約・お問合せ</a></li>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="facility.html">施設紹介</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="staff.html">スタッフ紹介</a></li>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="#access">アクセス</a></li>
       </ul>
     </nav>
   </header>
   <section class="hero" id="home" data-aos="fade-in">
-    <div class="hero-bg" style="background: url('images/hero.JPG') center/cover no-repeat;"></div>
-    <div class="hero-content">
-      <h1>石垣島で<br>特別なひとときを</h1>
-      <p>空と水の「SOLAIZ」へようこそ</p>
-      <a href="#contact" class="cta-btn">ご予約はこちら</a>
-    </div>
-  </section>
+  <div class="hero-content">
+    <h1 class="main-copy">星空とサウナで<br>極上の“ととのい”体験</h1>
+    <p class="sub-copy">満天の星空を眺めながら、マイクロミストサウナで心も体もリフレッシュ。<br>ここでしか味わえない癒しの時間をお過ごしください。</p>
+    <div class="reserve-form-wrap"><form class="reserve-form">
+  <div class="reserve-form-grid">
+    <label class="reserve-label">チェックイン
+      <input type="date" name="checkin" required="" class="reserve-input">
+    </label>
+    <label class="reserve-label">チェックアウト
+      <input type="date" name="checkout" required="" class="reserve-input">
+    </label>
+  </div>
+  <a href="reserve.html" target="_blank" rel="noopener noreferrer" class="cta-btn sauna-btn" style="margin-top:0.5em; display:inline-block; text-align:center; text-decoration:none;">予約する</a>
+</form></div>
+<!-- カスタムカレンダー（Googleカレンダー風） -->
+<div id="custom-calendar" class="custom-calendar"></div>
+  </div>
+</section>
   <main>
     <section class="section" id="rooms" data-aos="fade-up">
       <div class="container">
@@ -83,25 +119,54 @@
       </div>
     </section>
     <section class="section" id="access" data-aos="fade-up">
-      <div class="container">
-        <h2>アクセス</h2>
-        <p>〒907-0453 沖縄県石垣市川平835-1<br>
-        新石垣空港より車で約30分。</p>
-        <div class="map-embed" style="margin:2em 0; max-width:100%;">
-          <iframe src="https://www.google.com/maps?q=沖縄県石垣市川平835-1&output=embed" width="100%" height="320" style="border:0; background: linear-gradient(120deg, rgba(30,144,255,0.42) 0%, rgba(0,0,0,0.18) 100%), url('images/hero.jpg') center/cover no-repeat; border-radius:12px; min-width:200px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+      <div class="container access-flex" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2em; max-width: 900px; margin: 0 auto 2em auto;">
+  <div class="access-info" style="flex: 1 1 220px; min-width: 220px; max-width: 350px;">
+    <h2 style="margin-top:0;">アクセス</h2>
+    <p style="font-size:1.08em; margin-bottom:1.2em;">〒907-0453<br>沖縄県石垣市川平835-1<br>新石垣空港より車で約30分。</p>
+    <ul style="font-size:0.98em; margin:0; padding-left:1.2em;">
+      <li>タクシー/レンタカー推奨</li>
+      <li>最寄りバス停：川平公園前（徒歩約10分）</li>
+    </ul>
+  </div>
+  <div class="map-embed" style="flex: 2 1 320px; min-width: 220px; max-width: 520px; margin:0;">
+    <!-- Google Maps Directions Embed: New Ishigaki Airport to Solaiz Ishigaki Island -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d116248.39458476723!2d124.10030443138199!3d24.424323098897162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f9!4m13!3e0!4m5!1s0x345fe3e11fb1b66b%3A0x3783993534aa9b5d!2z5rKW57iE55yM55-z5Z6j5biC55m95L-d77yR77yZ77yW77yQ4oiS77yR77yQ77yU4oiS77yRIOefs-Weo-epuua4r--8iOWNl-OBrOWztiDnn7PlnqPnqbrmuK_vvIkgKElTRyk!3m2!1d24.3906414!2d124.2460132!4m5!1s0x345fddc1083715d5%3A0xc08d1fc66bbfa3ce!2sOkinawa%2C%20Ishigaki%2C%20Kabira%2C%20SOLAIZ%20Ishigaki%20Island!3m2!1d24.462676!2d124.14147009999999!5e0!3m2!1sja!2sjp!4v1745414305026!5m2!1sja!2sjp" width="100%" height="370" style="border:0; border-radius:12px; min-width:200px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
 
-      </div>
+<style>
+@media (max-width: 700px) {
+  .access-flex { flex-direction: column !important; gap: 1.2em !important; }
+  .access-info, .map-embed { max-width: 100% !important; min-width: 0 !important; }
+}
+</style>
+
     </section>
-    <section class="section section-alt" id="contact" data-aos="fade-up">
-      <div class="container">
-        <h2>予約・お問合せ</h2>
-        <form class="contact-form">
-          <input type="text" name="name" placeholder="お名前" required>
-          <input type="email" name="email" placeholder="メールアドレス" required>
-          <textarea name="message" placeholder="ご要望・ご質問" required></textarea>
-          <button type="submit">送信</button>
-        </form>
+        <script>
+        // 日付初期値セット: チェックイン=明日, チェックアウト=チェックイン+3日
+        function pad2(n) { return n < 10 ? '0'+n : n; }
+        function formatDate(dt) {
+          return dt.getFullYear() + '-' + pad2(dt.getMonth()+1) + '-' + pad2(dt.getDate());
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          const now = new Date();
+          const checkin = document.querySelector('input[name="checkin"]');
+          const checkout = document.querySelector('input[name="checkout"]');
+          // 明日の日付
+          const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+          checkin.value = formatDate(tomorrow);
+          // 3日後の日付
+          const out = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate()+3);
+          checkout.value = formatDate(out);
+          checkin.min = formatDate(tomorrow);
+          checkout.min = formatDate(out);
+        });
+        // Google Hotels風の人数選択ボタン
+
+        // 2ステップ切替
+
+        </script>
       </div>
     </section>
 
@@ -128,7 +193,6 @@
   </main>
   <footer>
     <div class="footer-container">
-      <div class="footer-logo">SOLAIZ</div>
       <div class="footer-social">
         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
@@ -137,11 +201,32 @@
       <div class="footer-info">
         <span>SOLAIZ 石垣</span>｜<span>〒907-0453 沖縄県石垣市川平835-1</span>
       </div>
-      <div class="footer-copy">&copy; 2025 SOLAIZ 民泊. All rights reserved.</div>
+      <div class="footer-copy" data-component-name="<div />" id="footer-copyright"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const year = new Date().getFullYear();
+    const text = `2024 - ${year} SOLAIZ ISHIGAKI ISLAND. All rights reserved.`;
+    document.getElementById('footer-copyright').textContent = text;
+  });
+</script>
     </div>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="script.js"></script>
+  <!-- flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+  <script>
+    // flatpickrを日付入力に適用
+    flatpickr("input[type='date']", {
+      locale: flatpickr.l10ns.ja,
+      minDate: "today",
+      dateFormat: "Y-m-d",
+      disableMobile: true // モバイルでもカスタムUIを強制
+    });
+  </script>
   <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
+<script src="fittext.js"></script>
+<script src="fittext-strict2lines.js"></script>
 </body>
 </html>
