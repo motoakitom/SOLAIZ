@@ -153,14 +153,16 @@
           const now = new Date();
           const checkin = document.querySelector('input[name="checkin"]');
           const checkout = document.querySelector('input[name="checkout"]');
-          // 明日の日付
-          const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
-          checkin.value = formatDate(tomorrow);
-          // 3日後の日付
-          const out = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate()+3);
-          checkout.value = formatDate(out);
-          checkin.min = formatDate(tomorrow);
-          checkout.min = formatDate(out);
+          // inputが存在する場合のみ実行
+          if (checkin && checkout) {
+            const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+            checkin.value = formatDate(tomorrow);
+            // 3日後の日付
+            const out = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate()+3);
+            checkout.value = formatDate(out);
+            checkin.min = formatDate(tomorrow);
+            checkout.min = formatDate(out);
+          }
         });
         // Google Hotels風の人数選択ボタン
 
@@ -191,42 +193,63 @@
       </div>
     </section>
   </main>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-      </div>
-      <div class="footer-info">
-        <span>SOLAIZ 石垣</span>｜<span>〒907-0453 沖縄県石垣市川平835-1</span>
-      </div>
-      <div class="footer-copy" data-component-name="<div />" id="footer-copyright"></div>
+<div id="footer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="script.js"></script>
+<!-- flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const year = new Date().getFullYear();
-    const text = `2024 - ${year} SOLAIZ ISHIGAKI ISLAND. All rights reserved.`;
-    document.getElementById('footer-copyright').textContent = text;
-  });
+  // flatpickrを日付入力に適用
+  // 明日の日付を取得
+function getTomorrowYMD() {
+  const t = new Date();
+  t.setDate(t.getDate() + 1);
+  const y = t.getFullYear();
+  const m = ('0' + (t.getMonth() + 1)).slice(-2);
+  const d = ('0' + t.getDate()).slice(-2);
+  return `${y}-${m}-${d}`;
+}
+// 指定日からn日後の日付を取得
+function addDaysYMD(dateStr, n) {
+  const t = new Date(dateStr);
+  t.setDate(t.getDate() + n);
+  const y = t.getFullYear();
+  const m = ('0' + (t.getMonth() + 1)).slice(-2);
+  const d = ('0' + t.getDate()).slice(-2);
+  return `${y}-${m}-${d}`;
+}
+// 初期値
+const checkinDefault = getTomorrowYMD();
+const checkoutDefault = addDaysYMD(checkinDefault, 3);
+
+// flatpickr適用（チェックイン）
+const checkinFP = flatpickr("input[name='checkin']", {
+  locale: flatpickr.l10ns.ja,
+  minDate: "today",
+  dateFormat: "Y-m-d",
+  altInput: true,
+  altFormat: "m月d日",
+  defaultDate: checkinDefault,
+  disableMobile: true,
+  onChange: function(selectedDates, dateStr) {
+    // チェックイン日変更時、チェックアウトも3日後に自動更新
+    const newCheckout = addDaysYMD(dateStr, 3);
+    checkoutFP.setDate(newCheckout, true);
+  }
+});
+// flatpickr適用（チェックアウト）
+const checkoutFP = flatpickr("input[name='checkout']", {
+  locale: flatpickr.l10ns.ja,
+  minDate: checkinDefault,
+  dateFormat: "Y-m-d",
+  altInput: true,
+  altFormat: "m月d日",
+  defaultDate: checkoutDefault,
+  disableMobile: true
+});
+  // AOS（Animate On Scroll）初期化
+  AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });
 </script>
-    </div>
-  </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="script.js"></script>
-  <!-- flatpickr JS -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
-  <script>
-    // flatpickrを日付入力に適用
-    flatpickr("input[type='date']", {
-      locale: flatpickr.l10ns.ja,
-      minDate: "today",
-      dateFormat: "Y-m-d",
-      disableMobile: true // モバイルでもカスタムUIを強制
-    });
-  </script>
-  <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
-<script src="fittext.js"></script>
-<script src="fittext-strict2lines.js"></script>
 </body>
 </html>

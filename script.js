@@ -114,6 +114,15 @@ window.addEventListener('click', function(e) {
 
 // --- カスタムカレンダー ---
 window.addEventListener('DOMContentLoaded', () => {
+  fetch('footer.html').then(res => res.text()).then(data => {
+    document.getElementById('footer').innerHTML = data;
+    // フッター挿入後に年号をセット
+    const year = new Date().getFullYear();
+    const copy = document.getElementById('footer-copyright');
+    if (copy) {
+      copy.textContent = `© ${year} SOLAIZ ISHIGAKI ISLAND. All rights reserved.`;
+    }
+  });
   const checkinInput = document.querySelector("input[name='checkin']");
   const checkoutInput = document.querySelector("input[name='checkout']");
   const calendarDiv = document.getElementById('custom-calendar');

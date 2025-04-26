@@ -35,23 +35,7 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="navbar">
-      <a href="index.html" class="logo" style="display:inline-block;"><img src="images/logo.png" alt="SOLAIZロゴ" class="header-logo-img" style="vertical-align:middle; filter: invert(1) brightness(2);"></a>
-      <div class="menu-toggle" aria-label="メニューを開く" tabindex="0">
-        <i class="fas fa-bars-staggered"></i>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">ホーム</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="facility.html">施設紹介</a></li>
-        <li><a href="gallery.html">ギャラリー</a></li>
-        <li><a href="staff.html">スタッフ紹介</a></li>
-        <li><a href="company.html">会社概要</a></li>
-        <li><a href="#access">アクセス</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div id="header"></div>
   <section class="section" id="staff" data-aos="fade-up">
   <div class="container">
     <h2>SOLAIZメンバー紹介</h2>
@@ -108,6 +92,7 @@
     </div>
   </div>
 </section>
+<div id="footer"></div>
 <style>
 .staff-card {
   background: #f0f6ff;
@@ -135,31 +120,43 @@
   font-size: 0.97em;
 }
 </style>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-social">
+  
+    
+      
         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
       </div>
-      <div class="footer-info">
-    <div class="footer-container">
-      <div class="footer-social">
+      
+        
+      </div>
+      </div>
+    </div>
+  
+    
+      
         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
       </div>
-      <div class="footer-info">
-        <span>SOLAIZ 石垣</span>｜<span>〒907-0453 沖縄県石垣市川平835-1</span>
+      
+    
+      
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
       </div>
-      <div class="footer-copy">&copy; 2025 SOLAIZ 民泊. All rights reserved.</div>
-    </div>
-      </div>
-      <div class="footer-copy">© 2025 SOLAIZ 民泊. All rights reserved.</div>
-    </div>
-  </footer>
+      
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="script.js"></script>
   <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
+  <script>
+    fetch('header.html').then(res => res.text()).then(data => {
+      document.getElementById('header').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
+  </script>
 </body>
 </html>
