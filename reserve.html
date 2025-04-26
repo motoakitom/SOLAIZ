@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ギャラリー | SOLAIZ 石垣</title>
+  <title>ご予約入力 | SOLAIZ 石垣</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&family=Bebas+Neue&family=Kaisei+HarunoUmi:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -52,32 +52,25 @@
       </ul>
     </nav>
   </header>
-  <section class="section" id="gallery" data-aos="fade-up">
-    <div class="container">
-      <h2>ギャラリー</h2>
-      <div class="gallery-grid">
-        <img src="images/gallery1.jpg" alt="ギャラリー1" data-aos="fade-up" data-aos-delay="100">
-        <img src="images/gallery2.jpg" alt="ギャラリー2" data-aos="fade-up" data-aos-delay="200">
-        <img src="images/gallery3.jpg" alt="ギャラリー3" data-aos="fade-up" data-aos-delay="300">
-        <img src="images/gallery4.jpg" alt="ギャラリー4" data-aos="fade-up" data-aos-delay="400">
-      </div>
+  <main>
+    <div class="reserve-form-wrap" style="max-width:420px;margin:60px auto 0 auto;padding:32px 24px;border-radius:16px;">
+      <h2 style="text-align:center;margin-bottom:1.3em;">ご予約入力フォーム</h2>
+      <form class="reserve-form">
+        <label class="reserve-label" for="checkin">チェックイン日</label>
+        <input class="reserve-input" type="date" id="checkin" name="checkin" required><br>
+        <label class="reserve-label" for="checkout">チェックアウト日</label>
+        <input class="reserve-input" type="date" id="checkout" name="checkout" required><br>
+        <label class="reserve-label" for="name">お名前</label>
+        <input class="reserve-input" type="text" id="name" name="name" required><br>
+        <label class="reserve-label" for="email">メールアドレス</label>
+        <input class="reserve-input" type="email" id="email" name="email" required><br>
+        <label class="reserve-label" for="guests">ご利用人数</label>
+        <input class="reserve-input" type="number" id="guests" name="guests" min="1" max="10" required><br>
+        <label class="reserve-label" for="message">ご要望・ご質問</label>
+        <textarea class="reserve-input" id="message" name="message" rows="3"></textarea><br>
+        <button type="submit" class="cta-btn sauna-btn" style="margin-top:0.5em;width:100%;">送信</button>
+      </form>
     </div>
-  </section>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-      </div>
-      <div class="footer-info">
-        <span>SOLAIZ 石垣</span>｜<span>〒907-0453 沖縄県石垣市川平835-1</span>
-      </div>
-      <div class="footer-copy">&copy; 2025 SOLAIZ 民泊. All rights reserved.</div>
-    </div>
-  </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="script.js"></script>
-  <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
+  </main>
 </body>
 </html>

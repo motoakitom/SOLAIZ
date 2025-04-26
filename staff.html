@@ -4,25 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>スタッフ紹介 | SOLAIZ 石垣</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&family=Bebas+Neue&family=Kaisei+HarunoUmi:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-hotel-form.css">
+  <!-- flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    /* 丸いデザイン用カスタム */
+    .flatpickr-calendar, .flatpickr-day, .flatpickr-months, .flatpickr-innerContainer, .flatpickr-weekdays {
+      border-radius: 1.5em !important;
+    }
+    .flatpickr-day.selected, .flatpickr-day.today {
+      border-radius: 50% !important;
+      background: #1e90ff;
+      color: #fff;
+    }
+    .flatpickr-day {
+      border-radius: 1em !important;
+      transition: background 0.15s, color 0.15s;
+    }
+    .flatpickr-month {
+      border-radius: 1.2em 1.2em 0 0 !important;
+    }
+    .flatpickr-calendar {
+      box-shadow: 0 8px 32px rgba(30,144,255,0.11);
+      border: 1.5px solid #b5c8e2;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <nav class="navbar">
-      <div class="logo">SOLAIZ ISHIGAKI</div>
+      <a href="index.html" class="logo" style="display:inline-block;"><img src="images/logo.png" alt="SOLAIZロゴ" class="header-logo-img" style="vertical-align:middle; filter: invert(1) brightness(2);"></a>
       <div class="menu-toggle" aria-label="メニューを開く" tabindex="0">
         <i class="fas fa-bars-staggered"></i>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html#home"><i class="fas fa-home"></i> ホーム</a></li>
-        <li><a href="facilities.html"><i class="fas fa-bed"></i> 施設紹介</a></li>
-        <li><a href="gallery.html"><i class="fas fa-images"></i> ギャラリー</a></li>
-        <li><a href="staff.html"><i class="fas fa-user-friends"></i> スタッフ紹介</a></li>
-        <li><a href="index.html#access"><i class="fas fa-map-marker-alt"></i> アクセス</a></li>
-        <li><a href="index.html#contact" class="reserve-btn"><i class="fas fa-calendar-check"></i> 予約・お問合せ</a></li>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="facility.html">施設紹介</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="staff.html">スタッフ紹介</a></li>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="#access">アクセス</a></li>
       </ul>
     </nav>
   </header>
@@ -111,7 +137,6 @@
 </style>
   <footer>
     <div class="footer-container">
-      <div class="footer-logo">SOLAIZ</div>
       <div class="footer-social">
         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
