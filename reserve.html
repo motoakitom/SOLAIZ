@@ -37,16 +37,6 @@
 <body>
   <header class="site-header">
     <nav class="navbar">
-      <a href="index.html" class="logo" style="display:inline-block;"><img src="images/logo.png" alt="SOLAIZロゴ" class="header-logo-img" style="vertical-align:middle; filter: invert(1) brightness(2);"></a>
-      <div class="menu-toggle" aria-label="メニューを開く" tabindex="0">
-        <i class="fas fa-bars-staggered"></i>
-      </div>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style-hotel-form.css">
-</head>
-<body style="background:#141830; color:#fff;">
-  <header class="site-header">
-    <nav class="navbar">
       <a href="index.html" class="logo"><img src="images/logo.png" alt="SOLAIZロゴ" class="header-logo-img" style="vertical-align:middle; filter: invert(1) brightness(2);"></a>
       <ul class="nav-links">
         <li><a href="index.html">ホーム</a></li>
@@ -60,21 +50,33 @@
     </nav>
   </header>
   <main>
-    <div class="reserve-form-wrap" style="max-width:420px;margin:60px auto 0 auto;padding:32px 24px;border-radius:16px;">
-      <h2 style="text-align:center;margin-bottom:1.3em;">ご予約入力フォーム</h2>
-      <form class="reserve-form">
-        <label class="reserve-label" for="checkin">チェックイン日</label>
-        <input class="reserve-input" type="date" id="checkin" name="checkin" required><br>
-        <label class="reserve-label" for="checkout">チェックアウト日</label>
-        <input class="reserve-input" type="date" id="checkout" name="checkout" required><br>
-        <label class="reserve-label" for="name">お名前</label>
-        <input class="reserve-input" type="text" id="name" name="name" required><br>
-        <label class="reserve-label" for="email">メールアドレス</label>
-        <input class="reserve-input" type="email" id="email" name="email" required><br>
-        <label class="reserve-label" for="guests">ご利用人数</label>
-        <input class="reserve-input" type="number" id="guests" name="guests" min="1" max="10" required><br>
-        <label class="reserve-label" for="message">ご要望・ご質問</label>
-        <textarea class="reserve-input" id="message" name="message" rows="3"></textarea><br>
+    <div class="reserve-form-wrap" style="max-width:420px;margin:60px auto 0 auto;padding:32px 24px;border-radius:16px;background:#1e90ff;">
+      <h2 style="text-align:center;margin-bottom:1.3em;color:#fff;">ご予約入力フォーム</h2>
+      <form class="reserve-form" style="display:flex;flex-direction:column;gap:1em;">
+        <div style="display:flex;flex-direction:column;">
+          <label class="reserve-label" for="checkin">チェックイン日</label>
+          <input class="reserve-input" type="date" id="checkin" name="checkin" required>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <label class="reserve-label" for="checkout">チェックアウト日</label>
+          <input class="reserve-input" type="date" id="checkout" name="checkout" required>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <label class="reserve-label" for="name">お名前</label>
+          <input class="reserve-input" type="text" id="name" name="name" required>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <label class="reserve-label" for="email">メールアドレス</label>
+          <input class="reserve-input" type="email" id="email" name="email" required>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <label class="reserve-label" for="guests">ご利用人数</label>
+          <input class="reserve-input" type="number" id="guests" name="guests" min="1" max="10" required>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <label class="reserve-label" for="message">ご要望・ご質問</label>
+          <textarea class="reserve-input" id="message" name="message" rows="3"></textarea>
+        </div>
         <button type="submit" class="cta-btn sauna-btn" style="margin-top:0.5em;width:100%;">送信</button>
       </form>
     </div>

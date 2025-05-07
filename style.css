@@ -1380,11 +1380,48 @@ h3, .section h3 {
   background: linear-gradient(90deg, #a2b5d7 80%, #fff 100%);
   border-radius: 6px;
 }
-h1, h3, .footer-logo, .section h3 {
+h1 {
+  color: #232946 !important;
+  font-family: 'Kaisei HarunoUmi', 'Noto Sans JP', 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.45rem !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  display: block !important;
+  margin-top: 0.8em !important;
+  margin-bottom: 0.7em !important;
+  border-left: 6px solid #232946 !important;
+  padding-left: 0.8em !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* モバイル用の特別なスタイル */
+@media (max-width: 700px) {
+  h1 {
+    font-size: 1.2rem !important;
+    padding-left: 0.5em !important;
+    margin-top: 0.6em !important;
+    margin-bottom: 0.5em !important;
+  }
+}
+
+h3, .footer-logo, .section h3 {
   color: #232946;
   font-family: 'Kaisei HarunoUmi', 'Noto Sans JP', 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 1.45rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
   margin-top: 0.8em;
   margin-bottom: 0.7em;
   border-left: 6px solid #232946;
