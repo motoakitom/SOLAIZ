@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* カスタムフォントの適用 */
+.font-kaisei {
+  font-family: var(--font-kaisei-harunoumi), serif;
+}
+
+/* ベースフォント設定 */
+:root {
+  --font-sans: var(--font-noto-sans-jp), sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #0F3460; /* ミッドナイトブルー */
+  --primary-foreground: #ffffff; /* プライマリ背景上のテキスト */
+  --secondary: #75C2F6; /* アズール */
+  --secondary-foreground: #0F3460; /* セカンダリ背景上のテキスト */
+  --accent: #1A5F7A; /* オーシャン */
+  --accent-foreground: #ffffff; /* アクセントカラー上のテキスト */
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --heading: #0F3460; /* 見出しはミッドナイトブルー */
+  --footer-bg: #0F3460;
+  --footer-text: #ffffff;
+  --footer-link: #75C2F6;
+  --footer-link-hover: #ffffff;
+}
+
+/* ダークテーマ */
+[data-theme="dark"] {
+  --background: #121212; /* より暗い色で目に優しく */
+  --foreground: #f5f5f5; /* 純白より少し灰色がかかった白で目に優しく */
+  --primary: #1A5F7A; /* ダークモードに合わせた深い青 */
+  --primary-foreground: #f5f5f5; /* プライマリ背景上のテキスト */
+  --secondary: #75C2F6; /* アズール - コントラストを確保 */
+  --secondary-foreground: #ffffff; /* セカンダリ背景上のテキスト */
+  --accent: #F9F3EE; /* ベージュ系アクセント */
+  --accent-foreground: #121212; /* アクセントカラー上のテキスト */
+  --muted: #2e2e2e;
+  --muted-foreground: #a3a3a3;
+  --card: #1f1f1f;
+  --card-foreground: #f5f5f5;
+  --border: #333333;
+  --input: #333333;
+  --heading: #75C2F6; /* ダークモードの見出しは明るく */
+  --footer-bg: #0a2942;
+  --footer-text: #f5f5f5;
+  --footer-link: #75C2F6;
+  --footer-link-hover: #ffffff;
+}
+
+/* メディアクエリによるダークモード対応（システム設定） */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #121212;
+    --foreground: #f5f5f5;
+    --primary: #1A5F7A;
+    --primary-foreground: #f5f5f5;
+    --secondary: #75C2F6;
+    --secondary-foreground: #ffffff;
+    --accent: #F9F3EE;
+    --accent-foreground: #121212;
+    --muted: #2e2e2e;
+    --muted-foreground: #a3a3a3;
+    --card: #1f1f1f;
+    --card-foreground: #f5f5f5;
+    --border: #333333;
+    --input: #333333;
+    --heading: #75C2F6;
+    --footer-bg: #0a2942;
+    --footer-text: #f5f5f5;
+    --footer-link: #75C2F6;
+    --footer-link-hover: #ffffff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-weight: 400; /* 通常のフォントウェイト */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* フォントウェイトの詳細度を上げる */
+.font-light {
+  font-weight: 300 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading);
+  font-weight: 600;
+}
+
+/* 本文の基本スタイル */
+p {
+  text-align: left;
+  line-height: 1.7;
+  margin-bottom: 1em;
+}
+
+/* コンテナスタイル */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* アニメーション */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
