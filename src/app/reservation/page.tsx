@@ -403,9 +403,9 @@ export default function Reservation() {
                       クレジットカード、現金がご利用いただけます。
                     </p>
                     <div className="flex gap-2">
-                      <img src="/images/visa.svg" alt="Visa" className="h-8" />
-                      <img src="/images/mastercard.svg" alt="Mastercard" className="h-8" />
-                      <img src="/images/amex.svg" alt="American Express" className="h-8" />
+                      <Image src="/images/visa.svg" alt="Visa" width={32} height={32} className="h-8 w-auto" />
+                      <Image src="/images/mastercard.svg" alt="Mastercard" width={32} height={32} className="h-8 w-auto" />
+                      <Image src="/images/amex.svg" alt="American Express" width={32} height={32} className="h-8 w-auto" />
                     </div>
                   </div>
                 </div>
