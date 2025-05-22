@@ -3,8 +3,10 @@ export interface Room {
   name: string;
   description: string;
   price: number;
+  priceMax: number;
   image: string;
   capacity: number;
+  features: string[];
 }
 
 export interface Reservation {
