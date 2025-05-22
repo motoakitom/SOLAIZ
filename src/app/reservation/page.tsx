@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -89,6 +89,18 @@ const RoomSelectCard = ({ room, selected, onSelect }: { room: Room, selected: bo
   );
 };
 
+export default function Reservation() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    }>
+      <ReservationContent />
+    </Suspense>
+  );
+}
+
 // 部屋データ
 const roomsData: Room[] = [
   {
@@ -168,11 +180,11 @@ const roomsData: Room[] = [
   }
 ];
 
-export default function Reservation() {
+function ReservationContent() {
   const searchParams = useSearchParams();
-  const initialRoomId = searchParams.get('room') ? parseInt(searchParams.get('room') as string) : null;
+  const roomId = searchParams.get('roomId') ? parseInt(searchParams.get('room') as string) : null;
   
-  const [selectedRoomId, setSelectedRoomId] = useState<number | null>(initialRoomId);
+  const [selectedRoomId, setSelectedRoomId] = useState<number | null>(roomId);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [step, setStep] = useState(1);
