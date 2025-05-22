@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiCheck, FiCalendar, FiUsers, FiCreditCard } from 'react-icons/fi';
 import { Room } from '@/types';
