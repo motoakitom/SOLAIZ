@@ -45,17 +45,6 @@ const roomsData: Room[] = [
 ];
 
 // 部屋カードコンポーネント
-interface Room {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  priceMax: number;
-  image: string;
-  capacity: number;
-  features: string[];
-}
-
 const RoomCard = ({ room }: { room: Room }) => {
   return (
     <motion.div 
