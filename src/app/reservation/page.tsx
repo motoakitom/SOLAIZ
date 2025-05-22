@@ -89,40 +89,83 @@ const RoomSelectCard = ({ room, selected, onSelect }: { room: Room, selected: bo
   );
 };
 
-// 仮のデータ
+// 部屋データ
 const roomsData: Room[] = [
   {
     id: 1,
     name: 'オーシャンビュースイート',
     description: '広々とした空間で、大きな窓からは美しい海を一望できます。キングサイズベッドと高級アメニティを備えた、最上級のお部屋です。',
     price: 28000,
+    priceMax: 35000,
     image: '/images/room1.jpg',
     capacity: 2,
+    features: [
+      'キングサイズベッド',
+      '海の眺め',
+      '高級アメニティ',
+      '無料Wi-Fi',
+      'エアコン',
+      'テレビ',
+      'ミニバー',
+      'セーフティボックス'
+    ]
   },
   {
     id: 2,
     name: 'ガーデンデラックス',
     description: '緑豊かな庭園に面したお部屋。自然の中でリラックスできる、落ち着いた雰囲気が特徴です。ダブルベッドを備えています。',
     price: 21000,
+    priceMax: 28000,
     image: '/images/room2.jpg',
     capacity: 2,
+    features: [
+      'ダブルベッド',
+      '庭園の眺め',
+      'バスタブ',
+      '無料Wi-Fi',
+      'エアコン',
+      'テレビ',
+      'ミニバー',
+      'セーフティボックス'
+    ]
   },
   {
     id: 3,
     name: 'スタンダードルーム',
     description: 'シンプルながらも快適な空間。ツインベッドを備え、ビーチへのアクセスも便利です。リーズナブルに島の滞在を楽しめます。',
     price: 18000,
+    priceMax: 25000,
     image: '/images/room3.jpg',
     capacity: 2,
+    features: [
+      'ツインベッド',
+      'シティビュー',
+      '無料Wi-Fi',
+      'エアコン',
+      'テレビ',
+      'セーフティボックス'
+    ]
   },
   {
     id: 4,
     name: 'ファミリールーム',
     description: '家族での滞在に最適な広々とした空間。クイーンベッドとソファベッドを備え、4名様までご利用いただけます。',
-    price: 24000,
-    image: '/images/room1.jpg',
+    price: 35000,
+    priceMax: 45000,
+    image: '/images/room4.jpg',
     capacity: 4,
-  },
+    features: [
+      'クイーンベッド + ソファベッド',
+      '広々としたスペース',
+      'キッチン付き',
+      '無料Wi-Fi',
+      'エアコン',
+      'テレビ',
+      '冷蔵庫',
+      '電子レンジ',
+      'セーフティボックス'
+    ]
+  }
 ];
 
 export default function Reservation() {
