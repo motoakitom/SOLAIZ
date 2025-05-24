@@ -10,73 +10,144 @@
   --font-sans: var(--font-noto-sans-jp), sans-serif;
 }
 
+/* ライトテーマ（デフォルト） */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #0F3460; /* ミッドナイトブルー */
-  --primary-foreground: #ffffff; /* プライマリ背景上のテキスト */
-  --secondary: #75C2F6; /* アズール */
-  --secondary-foreground: #0F3460; /* セカンダリ背景上のテキスト */
-  --accent: #1A5F7A; /* オーシャン */
-  --accent-foreground: #ffffff; /* アクセントカラー上のテキスト */
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
+  /* メインカラー */
+  --background: #f9f7f4;
+  --foreground: #212121;
+  
+  /* プライマリカラー */
+  --primary: #0070f3;
+  --primary-light: #3291ff;
+  --primary-dark: #0061e0;
+  --primary-foreground: #ffffff;
+  
+  /* セカンダリカラー */
+  --secondary: #1a1a1a;
+  --secondary-light: #333333;
+  --secondary-dark: #000000;
+  --secondary-foreground: #ffffff;
+  
+  /* アクセントカラー */
+  --accent: #e74c3c;
+  --accent-light: #ec7063;
+  --accent-dark: #c0392b;
+  --accent-foreground: #ffffff;
+  
+  /* UI要素 */
+  --muted: #e0e0e0;
+  --muted-foreground: #757575;
   --card: #ffffff;
-  --card-foreground: #171717;
-  --border: #e5e5e5;
-  --input: #e5e5e5;
-  --heading: #0F3460; /* 見出しはミッドナイトブルー */
-  --footer-bg: #0F3460;
-  --footer-text: #ffffff;
-  --footer-link: #75C2F6;
-  --footer-link-hover: #ffffff;
+  --card-foreground: #212121;
+  --border: #d0d0d0;
+  --input: #e0e0e0;
+  
+  /* テキスト */
+  --heading: #212121;
+  
+  /* フッター */
+  --footer-bg: #f0f0f0;
+  --footer-text: var(--foreground);
+  --footer-link: var(--primary);
+  --footer-link-hover: var(--secondary);
+  
+  /* エフェクト */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --transition: all 0.3s ease;
 }
 
 /* ダークテーマ */
 [data-theme="dark"] {
-  --background: #121212; /* より暗い色で目に優しく */
-  --foreground: #f5f5f5; /* 純白より少し灰色がかかった白で目に優しく */
-  --primary: #1A5F7A; /* ダークモードに合わせた深い青 */
-  --primary-foreground: #f5f5f5; /* プライマリ背景上のテキスト */
-  --secondary: #75C2F6; /* アズール - コントラストを確保 */
-  --secondary-foreground: #ffffff; /* セカンダリ背景上のテキスト */
-  --accent: #F9F3EE; /* ベージュ系アクセント */
-  --accent-foreground: #121212; /* アクセントカラー上のテキスト */
-  --muted: #2e2e2e;
-  --muted-foreground: #a3a3a3;
-  --card: #1f1f1f;
-  --card-foreground: #f5f5f5;
-  --border: #333333;
-  --input: #333333;
-  --heading: #75C2F6; /* ダークモードの見出しは明るく */
-  --footer-bg: #0a2942;
-  --footer-text: #f5f5f5;
-  --footer-link: #75C2F6;
-  --footer-link-hover: #ffffff;
+  /* メインカラー */
+  --background: #1a1a1a;
+  --foreground: #f0f0f0;
+  
+  /* プライマリカラー */
+  --primary: #61dafb;
+  --primary-light: #82e9ff;
+  --primary-dark: #40c1e2;
+  --primary-foreground: #1a1a1a;
+  
+  /* セカンダリカラー */
+  --secondary: #f0f0f0;
+  --secondary-light: #ffffff;
+  --secondary-dark: #cccccc;
+  --secondary-foreground: #1a1a1a;
+  
+  /* アクセントカラー */
+  --accent: #e74c3c;
+  --accent-light: #ec7063;
+  --accent-dark: #c0392b;
+  --accent-foreground: #ffffff;
+  
+  /* UI要素 */
+  --muted: #2c2c2c;
+  --muted-foreground: #b0b0b0;
+  --card: #242424;
+  --card-foreground: #f0f0f0;
+  --border: #444444;
+  --input: #2c2c2c;
+  
+  /* テキスト */
+  --heading: var(--primary);
+  
+  /* フッター */
+  --footer-bg: #121212;
+  --footer-text: var(--foreground);
+  --footer-link: var(--primary);
+  --footer-link-hover: var(--secondary);
+  
+  /* エフェクト */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 /* メディアクエリによるダークモード対応（システム設定） */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --background: #121212;
-    --foreground: #f5f5f5;
-    --primary: #1A5F7A;
-    --primary-foreground: #f5f5f5;
-    --secondary: #75C2F6;
-    --secondary-foreground: #ffffff;
-    --accent: #F9F3EE;
-    --accent-foreground: #121212;
-    --muted: #2e2e2e;
-    --muted-foreground: #a3a3a3;
-    --card: #1f1f1f;
-    --card-foreground: #f5f5f5;
-    --border: #333333;
-    --input: #333333;
-    --heading: #75C2F6;
-    --footer-bg: #0a2942;
-    --footer-text: #f5f5f5;
-    --footer-link: #75C2F6;
-    --footer-link-hover: #ffffff;
+    /* メインカラー */
+    --background: #1a1a1a;
+    --foreground: #f0f0f0;
+    
+    /* プライマリカラー */
+    --primary: #61dafb;
+    --primary-light: #82e9ff;
+    --primary-dark: #40c1e2;
+    --primary-foreground: #1a1a1a;
+    
+    /* セカンダリカラー */
+    --secondary: #f0f0f0;
+    --secondary-light: #ffffff;
+    --secondary-dark: #cccccc;
+    --secondary-foreground: #1a1a1a;
+    
+    /* アクセントカラー */
+    --accent: #e74c3c;
+    --accent-light: #ec7063;
+    --accent-dark: #c0392b;
+    --accent-foreground: #ffffff;
+    
+    /* UI要素 */
+    --muted: #2c2c2c;
+    --muted-foreground: #b0b0b0;
+    --card: #242424;
+    --card-foreground: #f0f0f0;
+    --border: #444444;
+    --input: #2c2c2c;
+    
+    /* テキスト */
+    --heading: var(--primary);
+    
+    /* フッター */
+    --footer-bg: #121212;
+    --footer-text: var(--foreground);
+    --footer-link: var(--primary);
+    --footer-link-hover: var(--secondary);
+    
+    /* エフェクト */
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -84,50 +155,323 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  font-weight: 400; /* 通常のフォントウェイト */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 400;
+  line-height: 1.7;
+  transition: var(--transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* フォントウェイトの詳細度を上げる */
 .font-light {
-  font-weight: 300 !important;
+  font-weight: 300;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--heading);
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
 }
 
-/* 本文の基本スタイル */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+/* パラグラフスタイル */
 p {
-  text-align: left;
+  color: var(--foreground);
+  margin-bottom: 1rem;
   line-height: 1.7;
-  margin-bottom: 1em;
+}
+
+/* ヒーローセクションのテキストカラー */
+.hero-section,
+.hero-section p,
+.hero-section h1,
+.hero-section h2,
+.hero-section h3,
+.hero-section h4,
+.hero-section h5,
+.hero-section h6 {
+  color: white !important;
+}
+
+/* リンクスタイル */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* ボタンスタイル */
+/*
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+button:hover, .btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+button:active, .btn:active {
+  transform: translateY(0);
+}
+
+button:focus, .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--primary), 0.3);
+}
+*/
+
+/* お問い合わせボタンのテキストカラーを白に固定 */
+#contact-cta-btn {
+  color: #ffffff !important;
+}
+
+/* カードスタイル */
+.card {
+  background: var(--card);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--card-shadow);
+}
+
+.card:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-4px);
+}
+
+/* セクション間隔 */
+section {
+  padding: 5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 6rem 2rem;
+  }
 }
 
 /* コンテナスタイル */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 /* アニメーション */
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.slide-up {
-  animation: slideUp 0.5s ease-in-out;
-}
-
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
-  0% { transform: translateY(20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+/* スクロールバーのスタイル */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* テキストバランス */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* スクロールバー非表示 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* SVGアイコンの基本スタイル */
+svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  shape-rendering: geometricPrecision;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ボタン内のアイコンサイズを明示的に指定し、詳細度を上げる */
+button svg,
+a svg,
+div.flex svg,
+span svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ヘッダー内のボタンのアイコン描画を強制的に設定 */
+#site-header button svg path,
+#site-header button svg line,
+#site-header button svg circle
+{
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+}
+
+/* ヘッダー内のボタンのSVG背景色を透明に設定 */
+#site-header button svg {
+  background-color: transparent !important;
+}
+
+/* ヘッダーの言語セレクタ内のボタンの背景色とボーダー半径をリセット */
+#language-selector button {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+}
+
+/* ヘッダーの言語セレクタ内のボタンがrounded-fullを維持するように */
+#language-selector button.rounded-full {
+  border-radius: 9999px !important; /* Tailwind rounded-fullの値 */
+}
+
+svg {
+  /* vector-effect: non-scaling-stroke; */
+  overflow: visible; /* 以前の修正を維持 */
+}
+
+/* ヘッダーのメニューボタンを囲むflexコンテナの背景色とボーダー半径をリセット */
+#site-header .flex.items-center:first-child {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+}
+
+/* SimpleThemeToggleボタンのスタイルを強制適用 */
+/*
+#simple-theme-toggle-button {
+  padding: 0.5rem !important; 
+  border-radius: 0.375rem !important;
+  color: var(--foreground) !important;
+  background-color: transparent !important; 
+}
+
+#simple-theme-toggle-button:hover {
+  background-color: var(--muted) !important;
+}
+*/
+
+/* 新しいモバイルメニューのスタイル */
+/* 以下のスタイルブロック全体を削除します */
+
+/* モバイルメニューのトランジション */
+#mobile-menu-overlay-new {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#mobile-menu-container-new {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* 上からドロップダウンするメニューのトランジション */
+#mobile-dropdown-menu {
+  transition: max-height 0.3s ease-in-out, visibility 0.3s ease;
+}
+
+/* モバイルドロップダウンメニュー内のリンクスタイル */
+#mobile-dropdown-menu a {
+  color: var(--foreground) !important; /* テーマのテキスト色を強制適用 */
+  text-decoration: none !important; /* 下線を強制的に削除 */
+}
+
+#mobile-dropdown-menu a:hover {
+  color: var(--primary) !important; /* ホバー時の色もテーマに合わせる */
 }

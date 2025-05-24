@@ -252,14 +252,14 @@ export default function Contact() {
                             </div>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">ご希望の部屋タイプ</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">部屋タイプのご希望</label>
                             <select
                               name="roomType"
                               value={formData.roomType}
                               onChange={handleChange}
                               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-midnight-blue focus:border-transparent"
                             >
-                              <option value="">お任せ</option>
+                              <option value="">希望なし</option>
                               <option value="トリプルルーム">トリプルルーム</option>
                               <option value="4ベッドプライベートルーム">4ベッドプライベートルーム</option>
                             </select>

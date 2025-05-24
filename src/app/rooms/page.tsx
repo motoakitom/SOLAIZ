@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FiUsers } from 'react-icons/fi';
 import { Room } from '@/types';
+import RoomCard from '@/components/RoomCard';
 
 // お部屋データ
 const roomsData: Room[] = [
@@ -44,64 +45,6 @@ const roomsData: Room[] = [
   }
 ];
 
-// 部屋カードコンポーネント
-const RoomCard = ({ room }: { room: Room }) => {
-  return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="bg-[var(--card)] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-    >
-      <div className="relative h-64">
-        <Image
-          src={room.image}
-          alt={room.name}
-          fill
-          className="object-cover"
-        />
-      </div>
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-4">
-          <h3 className="text-xl font-bold text-[var(--primary)]">{room.name}</h3>
-          <div className="flex items-center text-[var(--muted-foreground)]">
-            <FiUsers className="mr-1" />
-            <span>{room.capacity}名様</span>
-          </div>
-        </div>
-        <p className="text-[var(--muted-foreground)] mb-4">{room.description}</p>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            {room.features.map((feature, index) => (
-              <div key={index} className="flex items-start">
-                <span className="mr-2">⚪︎</span>
-                <p className="text-sm">{feature}</p>
-              </div>
-            ))}
-          </div>
-          <div className="pt-4 border-t border-gray-200">
-            <p className="text-lg font-semibold">
-              ¥{room.price.toLocaleString()}〜{room.priceMax.toLocaleString()}円
-              <span className="block text-sm font-normal text-[var(--muted-foreground)]">1泊1人あたり({room.capacity}名利用時)</span>
-            </p>
-            <p className="text-xs text-gray-500 mt-2">
-              ※シーズンやご利用人数により1人あたり金額は異なります。<br />
-              ※寝具不要の幼児は無料です。<br />
-              ※料金、ご予約はお問い合わせください。
-            </p>
-            <Link 
-              href={`/contact`}
-              className="mt-4 inline-block bg-[var(--primary)] text-[var(--foreground)] px-6 py-2 rounded-md hover:bg-opacity-90 transition-colors text-center w-full"
-            >
-              プラン・ご予約はこちら →
-            </Link>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 export default function Rooms() {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -110,50 +53,150 @@ export default function Rooms() {
   }, []);
 
   return (
-    <div className="min-h-screen pt-20">
-      {/* ヘッダーセクション */}
-      <section className="bg-[var(--primary)] text-[var(--foreground)] py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">お部屋</h1>
-          <p className="text-xl text-center max-w-3xl mx-auto">
-            すべてのお部屋は、心地よい島時間を過ごしていただけるよう、<br />細部までこだわってデザインされています。
-          </p>
+    <div className="min-h-screen pt-20 bg-[var(--background)]">
+      {/* ヒーローセクション */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/80 to-[var(--primary)]/60">
+          <div className="absolute inset-0 bg-noise opacity-10"></div>
+        </div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              お部屋・プラン
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              島の自然を感じる、くつろぎの空間。
+              <br className="hidden md:block" />
+              すべてのお部屋は、心地よい島時間を過ごしていただけるよう、
+              細部までこだわってデザインされています。
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* お部屋一覧 */}
-      <section className="py-16 px-4">
+      <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {isLoaded && roomsData.map((room) => (
-              <RoomCard key={room.id} room={room} />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-4xl mx-auto text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[var(--heading)] mb-4">
+              お部屋のご案内
+            </h2>
+            <div className="w-20 h-1 bg-[var(--accent)] mx-auto mb-6"></div>
+            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              リラックスできる空間とこだわりのインテリアで、
+              特別なひとときをお過ごしいただけます。
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {isLoaded && roomsData.map((room, index) => (
+              <motion.div
+                key={room.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+              >
+                <RoomCard {...room} />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* キャンセルポリシー */}
-      <section className="py-16 px-4 bg-sand">
+      <section className="py-16 md:py-24 px-4 bg-[var(--muted)]">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-center text-[var(--primary)]">キャンセルポリシー</h2>
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="space-y-4">
-              <p>⚪︎キャンセル料は以下の通り頂戴いたします。</p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>当日：宿泊料金の100%</li>
-                <li>3日前から：宿泊料金の80%</li>
-                <li>7日前から：宿泊料金の50%</li>
-                <li>14日前から：宿泊料金の20%</li>
-                <li>連絡なしの不泊/不着：宿泊料金の100%</li>
-              </ul>
-              <p>⚪︎航空・船舶便欠航の場合はキャンセル料はかかりません。</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[var(--heading)] mb-4">
+              キャンセルポリシー
+            </h2>
+            <div className="w-20 h-1 bg-[var(--accent)] mx-auto mb-6"></div>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-[var(--card)] rounded-xl p-8 shadow-sm border border-[var(--border)]"
+          >
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-[var(--heading)]">キャンセル料金について</h3>
+                <p className="text-[var(--muted-foreground)]">
+                  ご予約のキャンセルは、以下のキャンセル料が発生いたします。
+                </p>
+                <div className="bg-[var(--muted)] rounded-lg p-6">
+                  <ul className="space-y-3">
+                    <li className="flex justify-between py-2 border-b border-[var(--border)]">
+                      <span>当日</span>
+                      <span className="font-medium">宿泊料金の100%</span>
+                    </li>
+                    <li className="flex justify-between py-2 border-b border-[var(--border)]">
+                      <span>3日前〜前日</span>
+                      <span className="font-medium">宿泊料金の80%</span>
+                    </li>
+                    <li className="flex justify-between py-2 border-b border-[var(--border)]">
+                      <span>7日前〜4日前</span>
+                      <span className="font-medium">宿泊料金の50%</span>
+                    </li>
+                    <li className="flex justify-between py-2 border-b border-[var(--border)]">
+                      <span>14日前〜8日前</span>
+                      <span className="font-medium">宿泊料金の20%</span>
+                    </li>
+                    <li className="flex justify-between py-2">
+                      <span>連絡なしの不泊/不着</span>
+                      <span className="font-medium text-[var(--accent)]">宿泊料金の100%</span>
+                    </li>
+                  </ul>
+                </div>
+                <p className="text-sm text-[var(--muted-foreground)] mt-4">
+                  ※航空・船舶便欠航の場合はキャンセル料はかかりません。
+                  <br />
+                  ※天候不良によるキャンセルの場合も、上記キャンセルポリシーが適用されます。
+                </p>
+              </div>
+              
+              <div className="mt-8 p-6 bg-[var(--muted)] rounded-lg">
+                <h4 className="font-semibold text-[var(--heading)] mb-3">ご注意事項</h4>
+                <ul className="space-y-2 text-sm text-[var(--muted-foreground)]">
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>チェックインは15:00〜19:00、チェックアウトは〜10:00となります。</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>全室禁煙です。喫煙所は別途ご案内いたします。</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2">•</span>
+                    <span>ペット同伴でのご宿泊はお断りしております。</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 bg-gradient-to-r from-midnight-blue to-ocean text-[var(--foreground)]">
+      <section className="py-16 px-4 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">ご予約はお早めに</h2>
           <p className="mb-8 max-w-xl mx-auto">

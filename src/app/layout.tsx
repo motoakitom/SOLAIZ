@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/lib/theme-context";
+import { Providers } from "@/components/providers";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -28,15 +29,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body className={`${notoSansJP.variable} ${kaiseiHarunoUmi.variable} font-sans`} style={{ fontFeatureSettings: '"palt" 1' }}>
-        <ThemeProvider>
-          <Header />
-          <main className="min-h-screen pt-16">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider>
+            <Header />
+            <main className="min-h-screen pt-16">
+              {children}
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

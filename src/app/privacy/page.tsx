@@ -113,9 +113,9 @@ export default function PrivacyPolicy() {
                 <div className="space-y-2 text-gray-700">
                   <p>〒386-0041 長野県上田市秋和725-2（本社）</p>
                   <p>〒907-0453 沖縄県石垣市川平835-1（事業所）</p>
-                  <p>電話: 070-1075-6890</p>
+                  <p><a href="tel:+817010756890" className="text-gray-700 hover:underline">電話: 070-1075-6890</a></p>
                   <p>受付時間: 10:00〜18:00（土日祝日を除く）</p>
-                  <p>メール: <a href="mailto:solaiz@mira-kuru.co.jp" className="text-midnight-blue hover:underline">solaiz@mira-kuru.co.jp</a></p>
+                  <p>メール: <a href="mailto:solaiz@mira-kuru.co.jp" className="text-gray-700 hover:underline">solaiz@mira-kuru.co.jp</a></p>
                   <p>個人情報取扱責任者: 中澤 創</p>
                 </div>
               </div>

@@ -182,7 +182,8 @@ const roomsData: Room[] = [
 
 function ReservationContent() {
   const searchParams = useSearchParams();
-  const roomId = searchParams.get('roomId') ? parseInt(searchParams.get('room') as string) : null;
+  const initialRoomId = searchParams.get('roomId');
+  const roomId = initialRoomId ? parseInt(initialRoomId) : null;
   
   const [selectedRoomId, setSelectedRoomId] = useState<number | null>(roomId);
   const [startDate, setStartDate] = useState<Date | null>(null);
@@ -238,62 +239,9 @@ function ReservationContent() {
     <div className="min-h-screen pt-20 pb-16">
       {/* ヘッダーセクション */}
       <section className="bg-midnight-blue text-white py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">ご予約</h1>
-          <p className="text-center max-w-3xl mx-auto">
-            石垣島での特別な滞在を、簡単にご予約いただけます。
-          </p>
-          
-          {/* ステップ表示 */}
-          <div className="max-w-3xl mx-auto mt-8 px-4">
-            <div className="flex justify-between relative">
-              {/* ステップ1 */}
-              <div className={`relative z-10 flex-1 max-w-[180px] ${step >= 1 ? 'text-white' : 'text-gray-400'}`}>
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 transition-all duration-300 ${
-                  step >= 1 
-                    ? 'bg-white text-midnight-blue shadow-lg scale-110' 
-                    : 'bg-gray-600/50 text-gray-300'
-                }`}>
-                  <span className="font-medium">1</span>
-                </div>
-                <p className="text-sm font-medium text-white">日程・お部屋選択</p>
-              </div>
-              
-              {/* ステップ2 */}
-              <div className={`relative z-10 flex-1 max-w-[180px] ${step >= 2 ? 'text-white' : 'text-gray-400'}`}>
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 transition-all duration-300 ${
-                  step >= 2 
-                    ? 'bg-white text-midnight-blue shadow-lg scale-110' 
-                    : step > 2 
-                      ? 'bg-gray-400/50 text-white' 
-                      : 'bg-gray-600/50 text-gray-300'
-                }`}>
-                  <span className="font-medium">2</span>
-                </div>
-                <p className={`text-sm font-medium ${step >= 2 ? 'text-white' : 'text-gray-300'}`}>お客様情報入力</p>
-              </div>
-              
-              {/* ステップ3 */}
-              <div className={`relative z-10 flex-1 max-w-[180px] ${step >= 3 ? 'text-white' : 'text-gray-400'}`}>
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 transition-all duration-300 ${
-                  step >= 3 
-                    ? 'bg-white text-midnight-blue shadow-lg scale-110' 
-                    : 'bg-gray-600/50 text-gray-300'
-                }`}>
-                  <span className="font-medium">3</span>
-                </div>
-                <p className={`text-sm font-medium ${step >= 3 ? 'text-white' : 'text-gray-300'}`}>完了</p>
-              </div>
-              
-              {/* 進捗バー */}
-              <div className="absolute top-5 left-0 right-0 h-1 bg-gray-600/50 -z-0">
-                <div 
-                  className="h-full bg-white transition-all duration-500 ease-out" 
-                  style={{ width: step === 1 ? '0%' : step === 2 ? '50%' : '100%' }}
-                ></div>
-              </div>
-            </div>
-          </div>
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">ご予約</h1>
+          <p className="max-w-2xl mx-auto">石垣島での特別な滞在を、簡単にご予約いただけます。</p>
         </div>
       </section>
 

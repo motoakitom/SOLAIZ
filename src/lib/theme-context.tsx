@@ -12,6 +12,8 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const THEME_STORAGE_KEY = 'solaiz-theme';
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>('light');
   const [isInitialized, setIsInitialized] = useState(false);
@@ -20,7 +22,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // コンポーネントがマウントされたときに一度だけ実行
     if (!isInitialized) {
       // ローカルストレージから保存されたテーマを読み込む
-      const savedTheme = localStorage.getItem('theme') as Theme | null;
+      const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
       
       if (savedTheme) {
         // ユーザーが以前に選択したテーマがある場合はそれを使用
@@ -42,7 +44,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     const handleChange = (e: MediaQueryListEvent) => {
       // ユーザーが明示的にテーマを選択していない場合のみ、システム設定に従う
-      const savedTheme = localStorage.getItem('theme');
+      const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
       if (!savedTheme) {
         setTheme(e.matches ? 'dark' : 'light');
       }
@@ -62,7 +64,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // テーマに応じてdata-theme属性を設定
     document.documentElement.setAttribute('data-theme', theme);
     // ローカルストレージに保存（ユーザーが明示的に選択した場合）
-    localStorage.setItem('theme', theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme, isInitialized]);
 
   const toggleTheme = () => {

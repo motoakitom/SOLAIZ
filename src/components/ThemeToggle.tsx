@@ -19,15 +19,23 @@ export default function ThemeToggle() {
   }
 
   return (
-    <div className="flex items-center">
-      <span className="mr-2 text-sm flex items-center">
-        {theme === 'light' ? <FiSun className="text-[var(--footer-text)]" /> : <FiMoon className="text-[var(--footer-text)]" />}
+    <div id="theme-toggle-container" className="flex items-center">
+      {/* 左側アイコンを削除 */}
+      {/*
+      <span id="theme-icon" className="mr-2 text-sm flex items-center">
+        {theme === 'light' ? (
+          <FiMoon size={20} className="text-[var(--footer-text)]" /> 
+        ) : (
+          <FiSun size={20} className="text-[var(--footer-text)]" /> 
+        )}
       </span>
+      */}
       <button
+        id="theme-toggle-button"
         type="button"
         onClick={toggleTheme}
         className={`
-          relative inline-flex h-6 w-11 items-center rounded-full 
+          relative inline-flex h-8 w-14 items-center rounded-full
           transition-colors duration-300 ease-in-out focus:outline-none
           ${theme === 'dark' ? 'bg-[var(--primary)]' : 'bg-[var(--secondary)]'}
         `}
@@ -37,16 +45,21 @@ export default function ThemeToggle() {
           {theme === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
         </span>
         <span
+          id="theme-toggle-knob"
           className={`
-            inline-block h-4 w-4 rounded-full bg-white 
+            inline-block h-8 w-8 rounded-full bg-white
             transform transition-transform duration-300 ease-in-out
-            ${theme === 'dark' ? 'translate-x-6' : 'translate-x-1'}
+            ${theme === 'dark' ? 'translate-x-[24px]' : 'translate-x-[0px]'}
+            flex items-center justify-center
           `}
-        />
+        >
+          {theme === 'light' ? (
+            <FiSun size={24} className="text-gray-800" />
+          ) : (
+            <FiMoon size={24} className="text-yellow-400" />
+          )}
+        </span>
       </button>
-      <span className="ml-2 text-sm text-[var(--footer-text)]">
-        {theme === 'light' ? 'ライト' : 'ダーク'}
-      </span>
     </div>
   );
 } 
